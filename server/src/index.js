@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const middlewares = require('./middlewares'); // exporting file middlewares.js into index.js
+const logs = require('./api/logs');
 
 const app = express();
 
@@ -26,6 +27,8 @@ app.get('/', (req, res) => {
     message: 'Hello World',
   });
 });
+
+app.use('/api/logs', logs);
 
 // Errors middleware
 app.use(middlewares.notFound);
