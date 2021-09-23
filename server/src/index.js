@@ -9,14 +9,14 @@ const app = express();
 app.use(morgan('common'));
 app.use(helmet());
 app.use(cors({
-    origin: 'https//localhost:3000',
+  origin: 'https//localhost:3000',
 }));
 
 // simple middleware message
 app.get('/', (req, res) => {
-    res.json({
-        message: 'Hello World',
-    });
+  res.json({
+    message: 'Hello World',
+  });
 });
 
 // Errors middleware
@@ -25,5 +25,5 @@ app.use(middlewares.errorHander);
 
 const port = process.env.PORT || 1337;
 app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`);
+  console.log(`Listening at http://localhost:${port}`);
 });
