@@ -13,6 +13,7 @@ const app = express();
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 app.use(morgan('common'));
@@ -20,6 +21,8 @@ app.use(helmet());
 app.use(cors({
   origin: process.env.CORS_ORIGIN,
 }));
+
+app.use(express.json());
 
 // simple middleware message
 app.get('/', (req, res) => {
