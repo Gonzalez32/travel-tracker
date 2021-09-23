@@ -2,14 +2,22 @@ const express = require('express');
 const morgan = require('morgan'); // shows the format and helps debug.
 const helmet = require('helmet'); // block headers.
 const cors = require('cors');
+const mongoose = require('mongoose');
+
+require('dotenv').config();
 
 const middlewares = require('./middlewares'); // exporting file middlewares.js into index.js
 
 const app = express();
+
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+});
+
 app.use(morgan('common'));
 app.use(helmet());
 app.use(cors({
-  origin: 'https//localhost:3000',
+  origin: process.env.CORS_ORIGIN,
 }));
 
 // simple middleware message
