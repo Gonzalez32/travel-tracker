@@ -6,7 +6,7 @@ const notFound = (req, res, next) => {
 
 // eslint-disable-next-line no-unused-vars
 // we need four agruments: err, req, res, next
-const errorHander = (error, req, res, next) => {
+const errorHandler = (error, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   res.status(statusCode);
   res.json({
@@ -17,5 +17,5 @@ const errorHander = (error, req, res, next) => {
 
 module.exports = {
   notFound,
-  errorHander,
+  errorHandler,
 };

@@ -32,7 +32,7 @@ app.use('/api/logs', logs);
 
 // Errors middleware
 app.use(middlewares.notFound);
-app.use(middlewares.errorHander);
+app.use(middlewares.errorHandler);
 
 const port = process.env.PORT || 1337;
 app.listen(port, () => {
