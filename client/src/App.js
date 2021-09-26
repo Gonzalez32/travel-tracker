@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 
 import { listLogEntries } from './API';
 
@@ -71,6 +71,15 @@ const App = () => {
                 cx="12" cy="10" r="3">
               </circle>
             </svg> */}
+            <Popup
+              latitude={37.78}
+              longitude={-122.41}
+              closeButton={true}
+              closeOnClick={false}
+              // onClose={() => togglePopup(false)}
+              anchor="top" >
+              <div>You are here</div>
+            </Popup>
           </Marker>
         ))
       }
