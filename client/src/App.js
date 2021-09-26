@@ -42,7 +42,11 @@ const App = () => {
             <div>
               {entry.title}
             </div>
-            <svg 
+            <div>
+              <img className="Marker" src="https://i.imgur.com/y0G5YTX.png" alt="Marker"/>
+            </div>
+            {/* Uncommented the svg tag might use it later. */}
+            {/* <svg 
               className="Marker"
               style={{
                 // width: `calc(1vmin * ${viewport.zoom})`,
@@ -66,7 +70,7 @@ const App = () => {
               <circle 
                 cx="12" cy="10" r="3">
               </circle>
-            </svg>
+            </svg> */}
           </Marker>
         ))
       }

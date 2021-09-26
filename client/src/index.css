@@ -10,5 +10,7 @@ body {
 }
 
 .Marker {
-  stroke: #f8c102;
+  /* stroke: #f8c102; */
+  height: 24px;
+  width: 24px;
 }
