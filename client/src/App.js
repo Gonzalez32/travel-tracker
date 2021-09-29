@@ -33,55 +33,49 @@ const App = () => {
     >
       {
         logEntries.map(entry => (
+          <>
           <Marker
             key={entry._id}
             latitude={entry.latitude} 
             longitude={entry.longitude} 
+            onClick={() => setShowPopup({
+              ...showPopup,
+              [entry._id]: true,
+            })}
             offsetLeft={-12} 
             offsetTop={-24}
-          >
-            <div>
-              {entry.title}
-            </div>
-            <div>
-              <img className="Marker" src="https://i.imgur.com/y0G5YTX.png" alt="Marker"/>
-            </div>
-            {/* Uncommented the svg tag might use it later. */}
-            {/* <svg 
-              className="Marker"
-              style={{
-                // width: `calc(1vmin * ${viewport.zoom})`,
-                // height: `calc(1vmin * ${viewport.zoom})`,
-                width: '24px',
-                height: '24px'
-              }}
-              viewBox="0 0 24 24" 
-              width="44" 
-              height="44" 
-              stroke="currentColor" 
-              stroke-width="1.5" 
-              fill="none" 
-              stroke-linecap="round" 
-              stroke-linejoin="round"
             >
-              <path 
-                d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
-              >
-              </path>
-              <circle 
-                cx="12" cy="10" r="3">
-              </circle>
-            </svg> */}
-            <Popup
-              latitude={37.78}
-              longitude={-122.41}
-              closeButton={true}
-              closeOnClick={false}
-              // onClose={() => togglePopup(false)}
-              anchor="top" >
-              <div>You are here</div>
-            </Popup>
-          </Marker>
+            {/* <div>
+              {entry.title}
+            </div> */}
+            <div>
+              <img 
+                className="Marker" 
+                src="https://i.imgur.com/y0G5YTX.png" 
+                alt="Marker"
+              />
+            </div>
+            </Marker>
+            {
+              showPopup[entry._id] ? (
+                <Popup
+                  latitude={entry.latitude} 
+                  longitude={entry.longitude} 
+                  closeButton={true}
+                  closeOnClick={false}
+                  onClose={() => setShowPopup({
+                    ...showPopup,
+                    [entry._id]: false,
+                  })}
+                  anchor="top" >
+                  <div className="popup">
+                    <h3>{entry.title}</h3>
+                    <p>{entry.comments}</p>
+                  </div>
+                </Popup>
+              ) : null
+            }
+          </>
         ))
       }
     </ReactMapGL>
