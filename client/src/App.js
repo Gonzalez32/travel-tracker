@@ -6,6 +6,7 @@ import { listLogEntries } from './API';
 
 const App = () => {
   const [logEntries, setLogEntries] = useState([]);
+  const [showPopup, setShowPopup] = useState({});
   const [viewport, setViewport] = useState({
     width: '100vw',
     height: '100vh',
