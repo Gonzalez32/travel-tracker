@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { get } from 'react-hook-form';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 
 import { listLogEntries } from './API';
@@ -18,12 +19,14 @@ const App = () => {
     zoom: 4
   });
 
-  useEffect(() => {
-    (async () => {
-      const logEntries = await listLogEntries();
+  const getEntries = async () => {
+    const logEntries = await listLogEntries();
       setLogEntries(logEntries);
-      console.log(logEntries);
-    })();
+      // console.log(logEntries);
+  };
+
+  useEffect(() => {
+    getEntries();
   }, []);
 
   // AS a user can doubleclick and point a markerpopup
@@ -130,11 +133,14 @@ const App = () => {
             closeButton={true}
             closeOnClick={false}
             dynamicPosition={true}
-            onClose={() => setShowPopup(null)}
+            onClose={() => setAddEntryLocation(null)}
             anchor="top" >
             <div className="popup">
               {/* <h3> Add your new log entry here! </h3> */}
-              <LogEntryForm />
+              <LogEntryForm onClose={() => {
+                setAddEntryLocation(null);
+                getEntries();
+              }} location={addEntryLocation} />
             </div>
           </Popup>
           </>
