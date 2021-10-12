@@ -91,6 +91,7 @@ const App = () => {
                     <h3>{entry.title}</h3>
                     <p>{entry.comments}</p>
                     <small>Date Visited: {new Date(entry.visitDate).toLocaleDateString()}</small>
+                    {entry.image && <img src={entry.image} alt={entry.title} />}
                   </div>
                 </Popup>
               ) : null
