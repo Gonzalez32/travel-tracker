@@ -90,6 +90,7 @@ const App = () => {
                   <div className="popup">
                     <h3>{entry.title}</h3>
                     <p>{entry.comments}</p>
+                    <h6>Rating: {entry.rating}</h6>
                     <small>Date Visited: {new Date(entry.visitDate).toLocaleDateString()}</small>
                     {entry.image && <img src={entry.image} alt={entry.title} />}
                   </div>

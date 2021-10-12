@@ -33,6 +33,8 @@ const LogEntryForm = ({ location, onClose }) => {
       <textarea {...register('description')} rows={3}></textarea>
       <label htmlFor="image">Image</label>
       <input {...register('image')} />
+      <label htmlFor="rating">Rating</label>
+      <input {...register('rating')} required />
       <label htmlFor="visitDate">Visit Date</label>
       <input {...register('visitDate')} type="date" required />
       <button disabled={loading}>{loading ? 'Loading...' : 'Create Entry'}</button>
